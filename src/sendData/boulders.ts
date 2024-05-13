@@ -86,6 +86,71 @@ const boulders: Boulder[] = [
     grade: "V5",
   },
   {
+    name: "Everest",
+    date: "2023-05-18",
+    grade: "V5",
+  },
+  {
+    name: "Matterhorn",
+    date: "2023-05-18",
+    grade: "V5",
+  },
+  {
+    name: "Dyno Time Low",
+    date: "2023-05-02",
+    grade: "V6",
+  },
+  {
+    name: "Dyno Time",
+    date: "2023-05-02",
+    grade: "V4",
+  },
+  {
+    name: "George W",
+    date: "2023-05-02",
+    grade: "V4",
+  },
+  {
+    name: "Sunshine Daydream",
+    date: "2023-05-02",
+    grade: "V6",
+  },
+  {
+    name: "Shark Bait",
+    date: "2023-04-29",
+    grade: "V5",
+  },
+  {
+    name: "Wills Afire",
+    date: "2023-04-28",
+    grade: "V6",
+  },
+  {
+    name: "Water Paintings",
+    date: "2023-04-28",
+    grade: "V7",
+  },
+  {
+    name: 'Shadow of Death',
+    date: '2023-04-22',
+    grade: "V5"
+  },
+  {
+    name: 'Kill By Nunmbers',
+    date: '2023-04-22',
+    grade: "V5"
+  },
+  {
+    name: 'Zan\'s Girlfriend (Stand)',
+    date: '2023-04-22',
+    grade: "V5"
+  },
+  {
+    name: 'Spray Prow',
+    date: '2023-04-09',
+    grade: "V8"
+  },
+  {
     name: "Into the Light",
     date: "2022-12-04",
     grade: "V7",
@@ -94,6 +159,26 @@ const boulders: Boulder[] = [
     name: "Planet of the Apes",
     date: "2022-11-25",
     grade: "V7",
+  },
+  {
+    name: "Self Service",
+    date: "2022-11-25",
+    grade: "V4",
+  },
+  {
+    name: "Great White",
+    date: "2022-11-23",
+    grade: "V6",
+  },
+  {
+    name: "Tryptophan",
+    date: "2022-01-03",
+    grade: "V6",
+  },
+  {
+    name: "Wedgie",
+    date: "2021-11-20",
+    grade: "V4",
   },
 ];
 

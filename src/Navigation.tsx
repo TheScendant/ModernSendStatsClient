@@ -21,6 +21,7 @@ export const Navigation = () => {
     <NavigationWrapper>
       <StyledLink to="/timeline" >Timeline</StyledLink>
       <StyledLink to="/pyramid">Pyramid</StyledLink>
+      <StyledLink to="/table">Table</StyledLink>
     </NavigationWrapper>
   )
 }

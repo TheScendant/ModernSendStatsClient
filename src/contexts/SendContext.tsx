@@ -1,9 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import boulders, { Boulder } from "../sendData/boulders";
 
+// TODO fix types
 type Context = {
   timelineData: any[];
   pyramidData: any[];
+  boulders: Boulder[];
 };
 
 const SendContext = React.createContext({} as Context);
@@ -71,7 +73,7 @@ export const SendContextProvider = ({ children }: PropsWithChildren) => {
   const timelineData = Object.values(timeline).sort();
   const pyramidData = Object.values(pyramid).sort();
 
-  const value = { pyramidData, timelineData };
+  const value = { boulders, pyramidData, timelineData };
   return <SendContext.Provider value={value}>{children}</SendContext.Provider>;
 };
 export const useSendContext = () => React.useContext(SendContext);
