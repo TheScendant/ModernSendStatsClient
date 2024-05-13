@@ -8,13 +8,21 @@ const NavigationWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  color: black;
   padding: 1rem;
   border-radius: 2  px;
-  background: rgb(133, 226, 255);
+  background: #ccc;
   &:hover {
-    background: rgb(98, 233, 255);
+    background: #ddd;
+  }
+  &:visited {
+    color: black;
   }
 `
+
+// background: rgb(98, 233, 255);
+// background: rgb(133, 226, 255);
+
 
 export const Navigation = () => {
   return (
