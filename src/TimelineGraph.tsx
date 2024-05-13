@@ -11,6 +11,8 @@ export const TimelineGraph = () => {
       <XAxis dataKey="year" />
       <YAxis />
       <Legend />
+      <Bar dataKey="V4" stackId="a" fill="#a77" />
+      <Bar dataKey="V5" stackId="a" fill="#77a" />
       <Bar dataKey="V6" stackId="a" fill="#7aa" />
       <Bar dataKey="V7" stackId="a" fill="#a7a" />
       <Bar dataKey="V8" stackId="a" fill="#7a7" />
