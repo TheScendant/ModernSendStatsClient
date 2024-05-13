@@ -146,6 +146,11 @@ const boulders: Boulder[] = [
     grade: "V5"
   },
   {
+    name: 'Spray Prow',
+    date: '2023-04-09',
+    grade: "V8"
+  },
+  {
     name: "Into the Light",
     date: "2022-12-04",
     grade: "V7",
