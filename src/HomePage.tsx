@@ -1,7 +1,8 @@
 import React from "react";
 import { UserContext } from "./contexts/UserContext";
-import { PyramidGraph } from "./PyramidGraph";
 import styled from "styled-components";
+import { PyramidGraph } from "./PyramidGraph";
+import { TimelineGraph } from "./TimelineGraph";
 
 const Home = styled.div`
   width: 100vw;
@@ -18,7 +19,7 @@ export const HomePage = () => {
   }
   return (
     <Home>
-
+      <TimelineGraph />
       <PyramidGraph />
     </Home>
   );
