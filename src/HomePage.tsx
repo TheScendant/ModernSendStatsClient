@@ -3,6 +3,8 @@ import { UserContext } from "./contexts/UserContext";
 import styled from "styled-components";
 import { PyramidGraph } from "./PyramidGraph";
 import { TimelineGraph } from "./TimelineGraph";
+import { Redirect, Route, Switch } from "wouter";
+import { Navigation } from "./Navigation";
 
 const Home = styled.div`
   width: 100vw;
@@ -10,6 +12,7 @@ const Home = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 export const HomePage = () => {
@@ -19,8 +22,12 @@ export const HomePage = () => {
   }
   return (
     <Home>
-      <TimelineGraph />
-      <PyramidGraph />
+      <Navigation />
+      <Switch>
+        <Route path="/timeline" component={TimelineGraph} />
+        <Route path="/pyramid" component={PyramidGraph} />
+        <Redirect to="/timeline" />
+      </Switch>
     </Home>
   );
 };
