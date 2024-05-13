@@ -42,7 +42,7 @@ const getPyramidData = (boulders: Boulder[]) =>
     const date = new Date(curr.date);
     const year = date.getFullYear().toString();
 
-    // year not saved so create new year object
+    // grade not saved so create new grade object
     if (!acc[grade]) {
       return {
         ...acc,
@@ -53,7 +53,7 @@ const getPyramidData = (boulders: Boulder[]) =>
       };
     } else {
       const gradeData = acc[grade];
-      // if we have this grade add 1, if not set as 1
+      // if we have this year add 1, if not set as 1
       gradeData[year] = gradeData[year] ? gradeData[year] + 1 : 1;
 
       return {
@@ -64,11 +64,12 @@ const getPyramidData = (boulders: Boulder[]) =>
   }, {});
 
 export const SendContextProvider = ({ children }: PropsWithChildren) => {
-
   const timeline = getTimelineData(boulders)
   const pyramid = getPyramidData(boulders)
-  const timelineData = Object.values(timeline)
-  const pyramidData = Object.values(pyramid)
+
+  // TODO fix sort
+  const timelineData = Object.values(timeline).sort();
+  const pyramidData = Object.values(pyramid).sort();
 
   const value = { pyramidData, timelineData };
   return <SendContext.Provider value={value}>{children}</SendContext.Provider>;
