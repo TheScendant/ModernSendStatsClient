@@ -10,9 +10,9 @@ const NavigationWrapper = styled.div`
 const StyledLink = styled(Link)`
   padding: 1rem;
   border-radius: 2  px;
-  background: #ccc;
+  background: rgb(133, 226, 255);
   &:hover {
-    background: #ddd;
+    background: rgb(98, 233, 255);
   }
 `
 

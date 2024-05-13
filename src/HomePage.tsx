@@ -14,8 +14,9 @@ const Home = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  background-color: rgba(64, 87, 109, .07);
+  overflow: hidden;
 `;
-
 export const HomePage = () => {
   const { userLoggedIn } = React.useContext(UserContext);
   if (!userLoggedIn) {
