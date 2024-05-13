@@ -5,6 +5,7 @@ import { PyramidGraph } from "./PyramidGraph";
 import { TimelineGraph } from "./TimelineGraph";
 import { Redirect, Route, Switch } from "wouter";
 import { Navigation } from "./Navigation";
+import { Table } from "./Table";
 
 const Home = styled.div`
   width: 100vw;
@@ -25,6 +26,7 @@ export const HomePage = () => {
       <Navigation />
       <Switch>
         <Route path="/timeline" component={TimelineGraph} />
+        <Route path="/table" component={Table} />
         <Route path="/pyramid" component={PyramidGraph} />
         <Redirect to="/timeline" />
       </Switch>
