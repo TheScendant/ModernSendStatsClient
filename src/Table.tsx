@@ -7,6 +7,7 @@ import {
 } from '@tanstack/react-table'
 import { Boulder } from './sendData/boulders'
 import { useSendContext } from './contexts/SendContext'
+import styled from 'styled-components'
 
 const columnHelper = createColumnHelper<Boulder>()
 
@@ -25,6 +26,18 @@ const columns = [
     footer: info => info.column.id,
   })
 ]
+
+const StyledTable = styled.table`
+  border: 1px solid gray;
+  width: 90%;
+
+`;
+
+const StyledTh = styled.th`
+  text-align: start;
+  text-transform: capitalize;
+`
+
 export const Table = () => {
   const { boulders } = useSendContext();
   const table = useReactTable({
@@ -33,19 +46,17 @@ export const Table = () => {
     getCoreRowModel: getCoreRowModel(),
   })
   return (
-    <table>
+    <StyledTable>
       <thead>
         {table.getHeaderGroups().map(headerGroup => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map(header => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-              </th>
+              <StyledTh key={header.id}>
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}
+              </StyledTh>
             ))}
           </tr>
         ))}
@@ -61,6 +72,6 @@ export const Table = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </StyledTable>
   )
 }
