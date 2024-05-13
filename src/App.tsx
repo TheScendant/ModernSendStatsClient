@@ -1,4 +1,3 @@
-import './App.css';
 import { SendContextProvider } from './contexts/SendContext';
 import { UserContextProvider } from './contexts/UserContext';
 import { HomePage } from './HomePage';

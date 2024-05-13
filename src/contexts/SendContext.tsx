@@ -23,6 +23,7 @@ const getAccumulatedBoulders = (boulders: Boulder[]) =>
       };
     } else {
       const yearData = acc[year];
+
       // if we have this grade add 1, if not set as 1
       yearData[curr.grade] = yearData[curr.grade] ? yearData[curr.grade] + 1 : 1;
 
@@ -35,7 +36,7 @@ const getAccumulatedBoulders = (boulders: Boulder[]) =>
 
 export const SendContextProvider = ({ children }: PropsWithChildren) => {
 
-  const pyramidData = React.useMemo(() => getAccumulatedBoulders(boulders), [boulders]);
+  const pyramidData = getAccumulatedBoulders(boulders)
   const boulderData = Object.values(pyramidData)
 
   const value = { boulderData };
