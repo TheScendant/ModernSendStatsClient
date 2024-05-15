@@ -6,20 +6,22 @@ const HDiv = styled.div`
   gap: 1rem;
 `;
 
-{/* @ts-ignore */ }
-export const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    console.warn(active, payload, label)
-    return (
-      <div className="custom-tooltip">
-        {payload.map((item: any) => (
-          <HDiv>
-            <div>{item.name}:</div>
-            <div>{item.value}</div>
-          </HDiv>
-        ))}
+type Props = {
+  payload?: any[];
+}
 
-      </div>
-    );
+export const CustomTooltip = ({ payload }: Props) => {
+  if (!payload || payload.length === 0) {
+    return null;
   }
+  return (
+    <div className="custom-tooltip">
+      {payload?.map((item: any) => (
+        <HDiv>
+          <div>{item.name}:</div>
+          <div>{item.value}</div>
+        </HDiv>
+      ))}
+    </div>
+  );
 }
