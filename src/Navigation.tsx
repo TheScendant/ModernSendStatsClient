@@ -5,6 +5,7 @@ const NavigationWrapper = styled.div`
   display: flex;
   gap: 2rem;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 `;
 
 const StyledLink = styled(Link)`
