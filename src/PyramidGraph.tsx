@@ -17,7 +17,7 @@ export const PyramidGraph = () => {
           <XAxis dataKey="grade" />
           <YAxis />
           <Legend />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: '#ddd' }} />
           <Bar dataKey="2022" stackId="a" fill="rgb(189, 227, 160)" />
           <Bar dataKey="2023" stackId="a" fill="rgb(147, 233, 190)" />
           <Bar dataKey="2024" stackId="a" fill="rgb(109, 235, 227)" />

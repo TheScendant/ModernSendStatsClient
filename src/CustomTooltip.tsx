@@ -6,22 +6,30 @@ const HDiv = styled.div`
   gap: 1rem;
 `;
 
+const Tooltip = styled.div`
+  background: #ccc;
+  border: 1px solid black;
+  padding: 0 0.5rem 0.5rem;
+`;
+
 type Props = {
   payload?: any[];
+  label?: string;
 }
 
-export const CustomTooltip = ({ payload }: Props) => {
+export const CustomTooltip = ({ label, payload }: Props) => {
   if (!payload || payload.length === 0) {
     return null;
   }
   return (
-    <div className="custom-tooltip">
+    <Tooltip>
+      <h3>{label} Boulders sent</h3>
       {payload?.map((item: any) => (
         <HDiv>
           <div>{item.name}:</div>
           <div>{item.value}</div>
         </HDiv>
       ))}
-    </div>
+    </Tooltip>
   );
 }
