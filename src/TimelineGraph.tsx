@@ -1,8 +1,10 @@
 import {
   BarChart, Bar, XAxis, YAxis, Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
+  Tooltip
 } from 'recharts';
 import { useSendContext } from './contexts/SendContext';
+import { CustomTooltip } from './CustomTooltip';
 
 
 export const TimelineGraph = () => {
@@ -16,6 +18,7 @@ export const TimelineGraph = () => {
           <XAxis dataKey="year" />
           <YAxis />
           <Legend />
+          <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="V4" stackId="a" fill="rgb(255, 205, 149)" />
           <Bar dataKey="V5" stackId="a" fill="rgb(228, 217, 145)" />
           <Bar dataKey="V6" stackId="a" fill="rgb(189, 227, 160)" />
