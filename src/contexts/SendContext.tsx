@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren, createContext, useContext } from "react";
 import boulders, { Boulder } from "../sendData/boulders";
 import { GradeSortable, gradeSorter } from "../utils";
 
@@ -9,7 +9,7 @@ type Context = {
   boulders: Boulder[];
 };
 
-const SendContext = React.createContext({} as Context);
+const SendContext = createContext({} as Context);
 
 const getTimelineData = (boulders: Boulder[]) =>
   boulders.reduce((acc: any, curr: Boulder) => {
@@ -77,4 +77,4 @@ export const SendContextProvider = ({ children }: PropsWithChildren) => {
   const value = { boulders, pyramidData, timelineData };
   return <SendContext.Provider value={value}>{children}</SendContext.Provider>;
 };
-export const useSendContext = () => React.useContext(SendContext);
+export const useSendContext = () => useContext(SendContext);

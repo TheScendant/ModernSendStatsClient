@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
 import styled from "styled-components";
 import { PyramidGraph } from "./PyramidGraph";
@@ -6,6 +6,7 @@ import { TimelineGraph } from "./TimelineGraph";
 import { Redirect, Route, Switch } from "wouter";
 import { Navigation } from "./Navigation";
 import { Table } from "./Table";
+import { LoginPage } from "./LoginPage";
 
 const Home = styled.div`
   width: 100vw;
@@ -17,9 +18,9 @@ const Home = styled.div`
   background-color: rgba(64, 87, 109, .07);
 `;
 export const HomePage = () => {
-  const { userLoggedIn } = React.useContext(UserContext);
+  const { userLoggedIn } = useContext(UserContext);
   if (!userLoggedIn) {
-    return <></>;
+    return <LoginPage />;
   }
   return (
     <Home>
