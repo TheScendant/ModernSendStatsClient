@@ -8,7 +8,6 @@ import { CustomTooltip } from './CustomTooltip';
 
 export const PyramidGraph = () => {
   const { pyramidData } = useSendContext();
-
   return (
     <>
       <h1>Grade Pyramid</h1>
