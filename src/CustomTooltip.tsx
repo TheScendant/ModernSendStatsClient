@@ -23,7 +23,7 @@ export const CustomTooltip = ({ label, payload }: Props) => {
   }
   return (
     <Tooltip>
-      <h3>{label} Boulders sent</h3>
+      <h3>{label} Boulders Sent</h3>
       {payload?.map((item: any) => (
         <HDiv>
           <div>{item.name}:</div>

@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import boulders, { Boulder } from "../sendData/boulders";
+import { GradeSortable, gradeSorter } from "../utils";
 
 // TODO fix types
 type Context = {
@@ -69,9 +70,9 @@ export const SendContextProvider = ({ children }: PropsWithChildren) => {
   const timeline = getTimelineData(boulders)
   const pyramid = getPyramidData(boulders)
 
-  // TODO fix sort
   const timelineData = Object.values(timeline).sort();
-  const pyramidData = Object.values(pyramid).sort();
+  const pyramidData: GradeSortable[] = Object.values(pyramid);
+  pyramidData.sort(gradeSorter)
 
   const value = { boulders, pyramidData, timelineData };
   return <SendContext.Provider value={value}>{children}</SendContext.Provider>;
