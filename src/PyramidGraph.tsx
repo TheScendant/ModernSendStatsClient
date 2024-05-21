@@ -17,9 +17,10 @@ export const PyramidGraph = () => {
           <YAxis />
           <Legend />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: '#ddd' }} />
-          <Bar dataKey="2022" stackId="a" fill="rgb(189, 227, 160)" />
-          <Bar dataKey="2023" stackId="a" fill="rgb(147, 233, 190)" />
-          <Bar dataKey="2024" stackId="a" fill="rgb(109, 235, 227)" />
+          <Bar dataKey="2021" stackId="a" fill="rgb(255, 205, 149)" />
+          <Bar dataKey="2022" stackId="a" fill="rgb(228, 217, 145)" />
+          <Bar dataKey="2023" stackId="a" fill="rgb(189, 227, 160)" />
+          <Bar dataKey="2024" stackId="a" fill="rgb(147, 233, 190)" />
         </BarChart>
       </ResponsiveContainer>
     </>

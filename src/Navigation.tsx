@@ -21,10 +21,6 @@ const StyledLink = styled(Link)`
   }
 `
 
-// background: rgb(98, 233, 255);
-// background: rgb(133, 226, 255);
-
-
 export const Navigation = () => {
   return (
     <NavigationWrapper>
