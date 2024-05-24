@@ -6,6 +6,11 @@ export type Boulder = {
 
 const boulders: Boulder[] = [
   {
+    name: "One Armed Bandit",
+    date: "2024-05-22",
+    grade: "V4",
+  },
+  {
     name: "Vertical Ice",
     date: "2024-05-18",
     grade: "V6",
