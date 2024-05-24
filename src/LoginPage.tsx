@@ -10,13 +10,15 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
 `
 export const LoginPage = () => {
   const { setUserLoggedIn } = useContext(UserContext)
   return (
     <Wrapper>
-      Welcome to SendStats
-      <button onClick={() => setUserLoggedIn(true)}>Continue</button>
-    </Wrapper>
+      <h2>Welcome to SendStats!</h2>
+      <div>This details the boulders that I have finished during my short tenure as a boulderer.</div>
+      <button style={{ cursor: "pointer" }} onClick={() => setUserLoggedIn(true)}>See the Stats!</button>
+    </Wrapper >
   )
 }
