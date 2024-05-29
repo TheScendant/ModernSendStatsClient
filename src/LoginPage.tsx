@@ -12,13 +12,21 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
 `
+
+const Button = styled.button`
+  color: black;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 14px;
+`;
+
 export const LoginPage = () => {
   const { setUserLoggedIn } = useContext(UserContext)
   return (
     <Wrapper>
       <h2>Welcome to SendStats!</h2>
-      <div>This details the boulders that I have finished during my short tenure as a boulderer.</div>
-      <button style={{ cursor: "pointer" }} onClick={() => setUserLoggedIn(true)}>See the Stats!</button>
+      <div style={{ padding: '1rem' }}>This site details the boulders that I have finished during my short tenure as a boulderer.</div>
+      <Button style={{ cursor: "pointer" }} onClick={() => setUserLoggedIn(true)}>See the Stats!</Button>
     </Wrapper >
   )
 }

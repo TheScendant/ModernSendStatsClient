@@ -19,6 +19,7 @@ const StyledLink = styled(Link)`
   &:visited {
     color: black;
   }
+  text-decoration: none;
 `
 
 export const Navigation = () => {
