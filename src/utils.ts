@@ -12,6 +12,19 @@ export const gradeSorter = (a: GradeSortable, b: GradeSortable) => {
   return 0
 }
 
+export const dateSorter = (a: any, b: any) => {
+  const aDate = new Date(a.timeKey)
+  const bDate = new Date(b.timeKey)
+
+  if (aDate > bDate) {
+    return 1;
+  }
+  if (aDate < bDate) {
+    return -1
+  }
+  return 0
+}
+
 /*
   TODO css vars for color palette?
 

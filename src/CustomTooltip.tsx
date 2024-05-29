@@ -21,6 +21,7 @@ export const CustomTooltip = ({ label, payload }: Props) => {
   if (!payload || payload.length === 0) {
     return null;
   }
+
   return (
     <Tooltip>
       <h3>{label} Boulders Sent</h3>

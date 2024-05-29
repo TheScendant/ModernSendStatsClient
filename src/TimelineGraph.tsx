@@ -3,19 +3,96 @@ import {
   ResponsiveContainer,
   Tooltip
 } from 'recharts';
-import { useSendContext } from './contexts/SendContext';
+import { TimeSegment, useSendContext } from './contexts/SendContext';
 import { CustomTooltip } from './CustomTooltip';
+import { useState } from 'react';
+import styled from 'styled-components';
 
+const Slider = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(189, 227, 160);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(109, 235, 227);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+`
+export const formatXAxis = (a: any, timeSegment: TimeSegment) => {
+  const aDate = new Date(a + '-02')
+  const month = aDate.toLocaleString('default', { month: 'short' })
+
+  return timeSegment === 'month' ? `${month} ${aDate.getFullYear()} ` : `${aDate.getFullYear()} `;
+}
 
 export const TimelineGraph = () => {
   const { timelineData } = useSendContext();
+
+  const [timeSegment, setTimeSegment] = useState<TimeSegment>('year')
+  const data = timeSegment === 'year' ? timelineData.years : timelineData.months;
 
   return (
     <>
       <h1>Boulder Timeline</h1>
       <ResponsiveContainer width="80%" height="80%">
-        <BarChart data={timelineData}>
-          <XAxis dataKey="year" />
+        <BarChart data={data}>
+          <XAxis dataKey="timeKey" tickFormatter={a => formatXAxis(a, timeSegment)} />
           <YAxis />
           <Legend />
           <Tooltip content={<CustomTooltip />} cursor={false} />
@@ -26,6 +103,14 @@ export const TimelineGraph = () => {
           <Bar dataKey="V8" stackId="a" fill="rgb(109, 235, 227)" />
         </BarChart>
       </ResponsiveContainer>
+      <Slider>
+        <span>Years</span>
+        <label className="switch">
+          <input type="checkbox" onChange={(a) => setTimeSegment(a.target.checked ? 'month' : 'year')} />
+          <span className="slider round"></span>
+        </label>
+        <span>Months</span>
+      </Slider>
     </>
   )
 }
