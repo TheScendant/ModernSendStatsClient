@@ -4,36 +4,41 @@ import { GradeSortable, gradeSorter } from "../utils";
 
 // TODO fix types
 type Context = {
-  timelineData: any[];
+  timelineData: { months: any[], years: any[] };
   pyramidData: any[];
   boulders: Boulder[];
 };
 
+export type TimeSegment = 'month' | 'year';
+
 const SendContext = createContext({} as Context);
 
-const getTimelineData = (boulders: Boulder[]) =>
+const getTimelineData = (boulders: Boulder[], dataType: TimeSegment) =>
   boulders.reduce((acc: any, curr: Boulder) => {
     const date = new Date(curr.date);
     const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString();
+
+    const timeKey = dataType === 'month' ? `${month}-${year}` : year;
 
     // year not saved so create new year object
-    if (!acc[year]) {
+    if (!acc[timeKey]) {
       return {
         ...acc,
-        [year]: {
-          year,
+        [timeKey]: {
+          timeKey,
           [curr.grade]: 1,
         },
       };
     } else {
-      const yearData = acc[year];
+      const keyData = acc[timeKey];
 
       // if we have this grade add 1, if not set as 1
-      yearData[curr.grade] = yearData[curr.grade] ? yearData[curr.grade] + 1 : 1;
+      keyData[curr.grade] = keyData[curr.grade] ? keyData[curr.grade] + 1 : 1;
 
       return {
         ...acc,
-        [year]: yearData
+        [timeKey]: keyData
       };
     }
   }, {});
@@ -67,12 +72,19 @@ const getPyramidData = (boulders: Boulder[]) =>
   }, {});
 
 export const SendContextProvider = ({ children }: PropsWithChildren) => {
-  const timeline = getTimelineData(boulders)
+  const timelineMonths = getTimelineData(boulders, 'month')
+  const timelineYears = getTimelineData(boulders, 'year')
   const pyramid = getPyramidData(boulders)
 
-  const timelineData = Object.values(timeline).sort();
+  const timelineMonthsData = Object.values(timelineMonths).sort();
+  const timelineYearsData = Object.values(timelineYears).sort();
   const pyramidData: GradeSortable[] = Object.values(pyramid);
   pyramidData.sort(gradeSorter)
+
+  const timelineData = {
+    months: timelineMonthsData,
+    years: timelineYearsData
+  }
 
   const value = { boulders, pyramidData, timelineData };
   return <SendContext.Provider value={value}>{children}</SendContext.Provider>;
