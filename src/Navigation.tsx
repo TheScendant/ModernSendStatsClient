@@ -19,11 +19,8 @@ const StyledLink = styled(Link)`
   &:visited {
     color: black;
   }
+  text-decoration: none;
 `
-
-// background: rgb(98, 233, 255);
-// background: rgb(133, 226, 255);
-
 
 export const Navigation = () => {
   return (

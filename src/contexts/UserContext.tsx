@@ -1,13 +1,15 @@
-import React, { PropsWithChildren } from "react";
+import { Dispatch, PropsWithChildren, SetStateAction, createContext, useState } from "react";
 
 type Context = {
   userLoggedIn: boolean;
+  setUserLoggedIn: Dispatch<SetStateAction<boolean>>;
 };
 
-export const UserContext = React.createContext({} as Context);
+export const UserContext = createContext({} as Context);
 
-export const UserContextProvider = ({children}: PropsWithChildren) => {
-  const value = { userLoggedIn: true};
+export const UserContextProvider = ({ children }: PropsWithChildren) => {
+  const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
+  const value = { userLoggedIn, setUserLoggedIn };
   return (
     <UserContext.Provider value={value}>
       {children}

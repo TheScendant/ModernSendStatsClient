@@ -18,7 +18,7 @@ export const TimelineGraph = () => {
           <XAxis dataKey="year" />
           <YAxis />
           <Legend />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} cursor={false} />
           <Bar dataKey="V4" stackId="a" fill="rgb(255, 205, 149)" />
           <Bar dataKey="V5" stackId="a" fill="rgb(228, 217, 145)" />
           <Bar dataKey="V6" stackId="a" fill="rgb(189, 227, 160)" />
