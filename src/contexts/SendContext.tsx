@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useContext } from "react";
 import boulders, { Boulder } from "../sendData/boulders";
-import { GradeSortable, gradeSorter } from "../utils";
+import { GradeSortable, dateSorter, gradeSorter } from "../utils";
 
 // TODO fix types
 type Context = {
@@ -19,7 +19,7 @@ const getTimelineData = (boulders: Boulder[], dataType: TimeSegment) =>
     const year = date.getFullYear().toString();
     const month = (date.getMonth() + 1).toString();
 
-    const timeKey = dataType === 'month' ? `${month}-${year}` : year;
+    const timeKey = dataType === 'month' ? `${year}-${month}` : year;
 
     // year not saved so create new year object
     if (!acc[timeKey]) {
@@ -76,8 +76,8 @@ export const SendContextProvider = ({ children }: PropsWithChildren) => {
   const timelineYears = getTimelineData(boulders, 'year')
   const pyramid = getPyramidData(boulders)
 
-  const timelineMonthsData = Object.values(timelineMonths).sort();
-  const timelineYearsData = Object.values(timelineYears).sort();
+  const timelineMonthsData = Object.values(timelineMonths).sort(dateSorter);
+  const timelineYearsData = Object.values(timelineYears).sort(dateSorter);
   const pyramidData: GradeSortable[] = Object.values(pyramid);
   pyramidData.sort(gradeSorter)
 

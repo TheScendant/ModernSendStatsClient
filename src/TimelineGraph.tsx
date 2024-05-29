@@ -9,12 +9,18 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Slider = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
+
 .switch input {
   opacity: 0;
   width: 0;
@@ -28,7 +34,7 @@ const Slider = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgb(189, 227, 160);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -46,7 +52,7 @@ const Slider = styled.div`
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: rgb(109, 235, 227);
 }
 
 input:focus + .slider {
@@ -68,6 +74,12 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 `
+export const formatXAxis = (a: any, timeSegment: TimeSegment) => {
+  const aDate = new Date(a + '-02')
+  const month = aDate.toLocaleString('default', { month: 'short' })
+
+  return timeSegment === 'month' ? `${month} ${aDate.getFullYear()} ` : `${aDate.getFullYear()} `;
+}
 
 export const TimelineGraph = () => {
   const { timelineData } = useSendContext();
@@ -80,7 +92,7 @@ export const TimelineGraph = () => {
       <h1>Boulder Timeline</h1>
       <ResponsiveContainer width="80%" height="80%">
         <BarChart data={data}>
-          <XAxis dataKey="timeKey" />
+          <XAxis dataKey="timeKey" tickFormatter={a => formatXAxis(a, timeSegment)} />
           <YAxis />
           <Legend />
           <Tooltip content={<CustomTooltip />} cursor={false} />
@@ -92,10 +104,12 @@ export const TimelineGraph = () => {
         </BarChart>
       </ResponsiveContainer>
       <Slider>
+        <span>Years</span>
         <label className="switch">
           <input type="checkbox" onChange={(a) => setTimeSegment(a.target.checked ? 'month' : 'year')} />
           <span className="slider round"></span>
         </label>
+        <span>Months</span>
       </Slider>
     </>
   )
